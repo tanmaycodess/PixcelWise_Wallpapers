@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import styles from './Hero.module.css';
-import Wall from './Canvas/Wall';
+import styles from './Hero.module.css'; // Ensure this file contains necessary styles
+import Wall from './Canvas/Wall'; // Assuming this component is defined
 
 const Hero = () => {
+    // State to track window width
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    // Effect to update window width on resize
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup the event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <section className={styles.heroSection}>
             <div className={styles.heroContainer}>
@@ -34,10 +52,12 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Right Section - Wall */}
-                <div className={styles.wallContainer}>
-                    <Wall />
-                </div>
+                {/* Right Section - Wall (conditionally rendered based on screen width) */}
+                {windowWidth > 768 && (
+                    <div className={styles.wallContainer}>
+                        <Wall />
+                    </div>
+                )}
             </div>
         </section>
     );
