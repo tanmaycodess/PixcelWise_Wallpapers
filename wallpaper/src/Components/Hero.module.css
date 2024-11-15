@@ -106,18 +106,15 @@
 }
 
 @media (max-width: 468px) {
+  /* On very small screens, increase the wall container height */
   .wallContainer {
-    flex: 1;
-    max-width: 100%;
-    position: relative;
-    z-index: 0;
-    height: 200vh;
-}
+    height: 200vh; /* Increase height to cover larger screens */
+  }
 
-.line {
-   display: none;
-}
-
+  /* Hide the line on small screens */
+  .line {
+    display: none;
+  }
 }
 
 /* Fade-in animation for heading and text */
@@ -149,6 +146,18 @@
         padding: 20px;
     }
 
+    .heroSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100vw;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
     .contentContainer {
         max-width: 100%;
     }
@@ -171,5 +180,10 @@
     .line {
         height: 160px;
         margin-top: 8px;
+    }
+    
+    /* Ensuring the line is hidden on mobile */
+    .line {
+        display: none;
     }
 }

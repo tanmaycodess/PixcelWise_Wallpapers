@@ -1,3 +1,4 @@
+/* Contributors Page Layout */
 .contributorsPage {
     display: flex;
     justify-content: center;
@@ -31,15 +32,14 @@
 }
 
 @media (max-width: 468px) {
-
+  /* Hide the circle and line on small screens */
   .circle {
- display: none;
-}
+    display: none;
+  }
 
-.line {
-  display: none;
-}
-  
+  .line {
+    display: none;
+  }
 }
 
 .layoutContainer {
@@ -85,7 +85,6 @@
     line-height: 1.6;
     margin-bottom: 30px;
     color: aliceblue;
-
 }
 
 .contributorsList {
@@ -124,6 +123,7 @@
     color: #fc03d6; /* Change text color to pink on hover */
 }
 
+
 /* Responsive Design for Contributors */
 @media (max-width: 768px) {
     .contributor {
@@ -134,32 +134,7 @@
     .contributor p {
         font-size: 1rem;
     }
-}
 
-@media (max-width: 480px) {
-    .contributor {
-        max-width: 180px;
-        padding: 8px 16px;
-    }
-
-    .contributor p {
-        font-size: 0.9rem;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
     .layoutContainer {
         flex-direction: column;
         gap: 20px;
@@ -186,11 +161,35 @@
         height: 50px;
     }
 
+    /* Line adjustments for smaller screens */
     .line {
-  width: 3px;
-  height: 160px;
-  background: #fbfafc;
-  margin-top: 8px;
+        display: none;
+    }
 }
 
+@media (max-width: 480px) {
+    .contributor {
+        max-width: 180px;
+        padding: 8px 16px;
+    }
+
+    .contributor p {
+        font-size: 0.9rem;
+    }
+
+    /* Line adjustments for very small screens */
+    .line {
+      display: none;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

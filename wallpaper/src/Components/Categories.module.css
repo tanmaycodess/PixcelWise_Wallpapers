@@ -67,6 +67,7 @@
   margin-bottom: 3rem;
   position: relative;
   width: 100%;
+  justify-content: space-between; /* To ensure the image and info card are spaced out */
 }
 
 /* Info card content */
@@ -79,7 +80,7 @@
   max-width: 350px;
   text-align: left;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  margin: 0 auto;
+  margin: 0;
   padding: 1rem;
   z-index: 10;
 }
@@ -183,26 +184,45 @@
     font-size: 2rem;
   }
 
-  /* Single column grid for timeline items */
+  /* Timeline Section changes for mobile: Keep line but display cards in row */
   .timeline {
-    padding-left: 20px; /* Adjust space for mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to left for mobile */
+    gap: 2rem; /* Space between timeline items */
+    padding-left: 20px; /* Adjust space for the vertical line */
   }
 
-  /* Reduce image height for mobile */
-  .categoryImage {
-    height: 200px;
+  /* Keep vertical timeline line on mobile */
+  .timeline:before {
+    display: block;
   }
 
   /* Adjust category card size */
   .categoryCard {
     max-width: 100%;
     height: auto; /* Allow height to adjust based on content */
+    display: flex;
+    flex-direction: row; /* Image and Info Card side by side */
+    gap: 1rem; /* Space between image and text */
+   
+  }
+
+  .categoryImage {
+    width: 100%; /* Set image width to 50% for side-by-side layout */
+    height: 150px; /* Adjust image height */
+  }
+
+  .infoCard {
+    width: 50%; /* Info card takes the other half */
+    max-width: none; /* Remove the max-width constraint */
   }
 
   /* Stack items vertically on mobile */
   .timelineItem {
-    flex-direction: column;
+    flex-direction: row; /* Maintain side-by-side layout */
     align-items: center;
+    margin-bottom: 2rem; /* Adjust gap between items */
   }
 
   .timelineItem:nth-child(odd) .categoryCard,
@@ -215,13 +235,8 @@
   .timelineItem:nth-child(even) .infoCard {
     margin-left: 0;
     margin-right: 0;
-    max-width: 300px; /* Reduce the size of info cards */
+    max-width: none; /* Remove max width */
     padding: 1rem;
-  }
-
-  /* Reduce the gap between timeline items on mobile */
-  .timelineItem {
-    margin-bottom: 1.5rem;
   }
 
   /* Adjust font size for smaller screens */

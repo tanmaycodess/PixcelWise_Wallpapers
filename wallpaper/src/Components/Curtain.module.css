@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
-
-/* Banner.module.css */
+/* General styles for the banner */
 .Top_Banner_Container {
     height: 100vh;
     width: 100vw;
@@ -30,54 +27,25 @@
 
 /* Heading styles */
 .overlay h1 {
-  font-size: 3rem; /* Adjust for desired size */
-  color: white;
-  font-family: 'Playfair Display', serif;
-
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  z-index: 3; /* Ensure it appears above the overlay */
-  letter-spacing: 3px;
-  padding: 0 20px;
-  max-width: 90%;
-  background: rgba(0, 0, 0, 0.6); /* A dark background to make text readable */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow to make text stand out */
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 3;
+    letter-spacing: 3px;
+    padding: 0 20px;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Apply to the video element */
-.videoContainer {
-    position: relative;
-    width: 100%;
-    height: 100vh;  /* Use full viewport height */
-    overflow: hidden; /* Ensures that the video doesn't overflow outside its container */
-}
-
-.videoContainer video {
-    width: 100%;  /* Make video take up full width of its container */
-    height: 100%; /* Make video take up full height of its container */
-    object-fit: cover;  /* Ensures the video covers the entire area without distortion */
-    object-position: center; /* Keeps the video centered */
-    filter: brightness(0.7); /* Optionally add brightness or other filters */
-    transition: filter 0.3s ease; /* Smooth transition for hover effects */
-}
-
-/* Optional: Add a hover effect to change brightness */
-.videoContainer:hover video {
-    filter: brightness(1); /* Return to full brightness when hovered */
-}
-
-/* Video controls styling (optional) */
-video::-webkit-media-controls {
-    display: none !important; /* Hides the default video controls */
-}
-
-
+/* Large screen layout: 3 columns side by side */
 .columns {
     display: flex;
     width: 100%;
-    z-index: 2; /* Ensure it appears above overlay */
+    z-index: 2;
 }
 
 .column {
@@ -88,28 +56,21 @@ video::-webkit-media-controls {
     text-align: center;
 }
 
-.column img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    filter: brightness(0.7); /* Dim the image slightly */
-}
-
-/* Styling for video elements */
+.column img,
 .column video {
     width: 100%;
     height: 100vh;
-    object-fit: cover; /* Ensure video covers the container without distortion */
-    filter: brightness(0.7); /* Dim video */
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.column video {
     transition: filter 0.3s ease;
 }
 
-/* Hover effect for video to adjust brightness */
 .column:hover video {
-    filter: brightness(0.9); /* Lighten video on hover */
+    filter: brightness(0.9);
 }
-
-
 
 .column p {
     position: absolute;
@@ -119,74 +80,99 @@ video::-webkit-media-controls {
     font-size: 1.6rem;
     font-weight: 500;
     max-width: 80%;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
-}
-
-p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: white;
-    display: flex;
-    justify-content: space-between; /* Align text to the left and icon to the right */
-    align-items: center; /* Vertically align text and icon */
-    text-align: left; /* Ensure the text aligns left */
-    width: 100%; /* Ensures full width is used for the flex container */
-    padding-right: 10px; /* Adds space from the right edge */
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
 .arrowIcon {
-    margin-left: 15px; /* Adds some space between text and icon */
-    font-size: 30px; /* Set the size of the icon */
+    margin-left: 15px;
+    font-size: 30px;
     color: #ffffff;
     transition: transform 0.3s ease;
-    cursor: pointer; /* Show pointer cursor to indicate it's clickable */
+    cursor: pointer;
 }
 
 .arrowIcon:hover {
-    transform: translateX(5px); /* Adds a subtle "move" effect on hover */
+    transform: translateX(5px);
 }
 
-.column:hover img {
-    filter: brightness(0.9); /* Slightly lighten on hover */
-    transition: filter 0.3s ease;
-    box-sizing: border-box;
-    overflow: hidden;
-    color: white;
-    text-align: center;
-}
-
-.Top_Banner_Container h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-.img_container {
-    display: flex;
+/* Carousel for small screens */
+.carouselContainer {
+    display: none; /* Hide carousel by default */
     width: 100%;
-    height: 100%;
-}
-
-.img_container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.Top_Banner_img {
-    width: 33.33%;
-    height: 100%;
+    height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
-.Top_Banner_img p {
-    position: absolute;
-    bottom: 20px;
+.carouselItem {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.carouselSlide {
     width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 16px;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.carouselImage,
+.carouselVideo {
+    width: 100%;
+    height: 100%;
+    object-fit:fill; /* Make the image/video fit the container */
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
+}
+
+/* Media query for small screens */
+@media screen and (max-width: 768px) {
+    /* Hide columns for small screens */
+    .columns {
+        display: none;
+    }
+
+    /* Show carousel on mobile */
+    .carouselContainer {
+        display: block;
+    }
+
+    /* Style the carousel slides */
+    .carouselItem {
+        display: flex;
+        width: 100%; /* Each slide takes up full width */
+        height: 100vh;
+    }
+
+    .carouselSlide {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .carouselImage,
+    .carouselVideo {
+        filter: brightness(0.6); /* Slightly dim the images/videos */
+    }
+
+    .carouselSlide:hover .carouselImage,
+    .carouselSlide:hover .carouselVideo {
+        filter: brightness(1); /* Increase brightness on hover */
+    }
+
+    .overlay h1 {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 3;
+    letter-spacing: 3px;
+    padding: 0 20px;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+}
