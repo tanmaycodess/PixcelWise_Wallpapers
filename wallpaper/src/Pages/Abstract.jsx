@@ -7,8 +7,6 @@ const App = () => {
         // page 1
         { id: '1CnSgPhxA9eX6zlneKVWHawFojuxQUQ4w', name: 'abstract1' },
         { id: '1ZwdUj2JG0qlYAp0mLiYROWdn-5LJ2ems', name: 'abstract2' },
-        
-      // page 2
 
         // More images here ...
     ]);

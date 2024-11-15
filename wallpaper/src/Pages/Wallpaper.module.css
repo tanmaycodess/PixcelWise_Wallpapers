@@ -1,235 +1,190 @@
-/* Global Styles */
+/* General Styles */
 .App {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    padding: 20px;
-    min-height: 100vh;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: 600;
-    line-height: 1.2;
 }
 
 /* Image Gallery Styles */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    justify-items: center;
-    margin-top: 20px;
-    width: 100%;
+    margin-top: 40px;
     max-width: 1200px;
+    width: 100%;
 }
 
+/* Individual Image Card Styling */
 .image-item {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    position: relative;
-    width: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+    cursor: pointer;
 }
 
 .image-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-12px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.image-item iframe {
+/* Image Iframe */
+iframe {
     width: 100%;
     height: 250px;
-    border-radius: 8px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.image-item iframe:hover {
-    transform: scale(1.02);
-}
-
-/* Download Button Styles */
-.download-btn {
-    background-color: #fc03d6;
-    color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-    max-width: 220px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
 }
 
-.download-btn:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
+/* Download Button Styling */
+.download-btn {
+    background-color: #00bcd4;
+    color: white;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 0 0 12px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
 }
 
 .download-btn:hover {
-    background-color: #000;
     transform: scale(1.05);
+    background-color: #008c99;
 }
 
-/* Pagination Styles */
+.download-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Pagination Styling */
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+    margin-top: 50px;
+    width: 100%;
 }
 
-.pageBtn,
-.active {
-    background-color: #fc03d6;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50%;
-    margin: 0;
+.pageBtn {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 12px 25px;
+    margin: 0 8px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .pageBtn:hover {
-    background-color: #000;
-    transform: scale(1.05);
+    background-color: #00bcd4;
+    color: white;
 }
 
 .active {
-    background-color: #000;
+    background-color: #00bcd4;
+    color: white;
     font-weight: bold;
+    padding: 12px 25px;
 }
 
-.pageBtn:focus {
-    outline: none;
-}
-
-/* Success Pop-up Styles */
+/* Success Message Styles */
 .successMessage {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-out;
-}
-
-/* Pop-up Content */
-.messageContent {
-    background-color: #ffffff;
-    padding: 25px;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 15px;
     border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    transition: transform 0.3s ease-out;
-    transform: scale(0.95);
-    animation: scaleUp 0.3s ease-out forwards;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.5s ease-out;
 }
 
-/* Title Styling */
-.messageContent h2 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: #4CAF50; /* Green color for success */
-    font-weight: 700;
+.successMessage h2 {
+    margin-right: 12px;
+    font-size: 1.2rem;
 }
 
-/* Message Styling */
-.messageContent p {
-    font-size: 1.1rem;
-    color: #555;
-    font-weight: 500;
-    margin-bottom: 20px;
+.successMessage p {
+    font-size: 0.9rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-    .download-btn {
-        font-size: 0.95rem;
-    }
+.successMessage svg {
+    margin-right: 10px;
 }
 
-@media (max-width: 768px) {
-    .download-btn {
-        font-size: 0.9rem;
-        padding: 10px 18px;
-    }
-
-    .pagination {
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-
-    .messageContent {
-        padding: 20px;
-        width: 90%;
-    }
-
-    .messageContent h2 {
-        font-size: 1.3rem;
-    }
-
-    .messageContent p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .download-btn {
-        font-size: 0.85rem;
-        padding: 10px 18px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .image-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-    }
-}
-
-/* Animations */
+/* Animation for Success Message */
 @keyframes fadeIn {
     0% {
         opacity: 0;
+        transform: translateY(-10px);
     }
     100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@keyframes scaleUp {
-    0% {
-        transform: scale(0.9);
+/* Loading Spinner */
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #00bcd4;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 2s linear infinite;
+    margin-right: 10px;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .App {
+        padding: 10px;
     }
-    100% {
-        transform: scale(1);
+
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .download-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    .pageBtn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .pagination {
+        margin-top: 30px;
     }
 }
