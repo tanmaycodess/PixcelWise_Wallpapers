@@ -1,0 +1,196 @@
+.contributorsPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fbfafc;
+}
+
+.line {
+  width: 3px;
+  height: 500px;
+  background: #fbfafc;
+  margin-top: 8px;
+}
+
+@media (max-width: 468px) {
+
+  .circle {
+ display: none;
+}
+
+.line {
+  display: none;
+}
+  
+}
+
+.layoutContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Ensure the content spans full height */
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+.hero {
+    flex: 1;
+    height: 100%; /* Ensure the 3D model takes full height */
+    background-color: #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    flex: 1.5; /* Content should be larger than the model */
+    padding: 40px;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fc03d6;
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: aliceblue;
+
+}
+
+.contributorsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contributor Section */
+.contributor {
+    background-color: #fff;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 250px; /* Adjust max-width based on your layout */
+}
+
+.contributor:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contributor p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.contributor p:hover {
+    color: #fc03d6; /* Change text color to pink on hover */
+}
+
+/* Responsive Design for Contributors */
+@media (max-width: 768px) {
+    .contributor {
+        max-width: 200px;
+        padding: 10px 18px;
+    }
+
+    .contributor p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contributor {
+        max-width: 180px;
+        padding: 8px 16px;
+    }
+
+    .contributor p {
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .layoutContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero {
+        height: 250px; /* Adjust for smaller screens */
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .contributor img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .line {
+  width: 3px;
+  height: 160px;
+  background: #fbfafc;
+  margin-top: 8px;
+}
+
+}

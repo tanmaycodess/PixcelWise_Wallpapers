@@ -1,0 +1,147 @@
+/* General reset and body styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Target the navbar toggle button */
+.navbar-toggler {
+  border: none; /* Remove border if you don't want one */
+  background-color: transparent; /* Make the background transparent */
+}
+
+/* Style the hamburger icon color to white */
+.navbar-toggler .fa-bars {
+  color: white; /* Change the icon color to white */
+}
+
+/* Optional: If you want to change the color of the toggle icon on hover */
+.navbar-toggler:hover .fa-bars {
+  color: white; /* Change to white on hover if needed */
+}
+
+/* Media query for mobile view */
+@media (max-width: 991px) {
+  .navbar-toggler .fa-bars {
+    color: white; /* Ensure the toggle icon is white on mobile */
+  }
+}
+
+
+/* Navbar container */
+.navbar {
+  background-color: #f1eded; /* Dark background for the navbar */
+  padding: 0.8rem 2rem; /* Add some padding around */
+  position: sticky; /* Make the navbar stick to the top of the screen */
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar layout */
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the navbar */
+}
+
+.navLink {
+  color: #000; 
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: #fc03d6; /* Pink hover effect */
+}
+
+.activeLink {
+  color: #fc03d6; /* Pink color for active link */
+  font-weight: bold; /* Bold font for active link */
+}
+
+/* Style for mobile */
+@media (max-width: 768px) {
+  .navbarCustom {
+    background-color: #fffcfc;
+  }
+
+  .navbarContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navLinks {
+    display: block;
+    text-align: center;
+  }
+
+  .navLink {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+  }
+}
+
+/* Logo styling (on the left) */
+.logo {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbarContainer {
+    flex-direction: column; /* Stack the navbar content vertically */
+    align-items: center; /* Center align the items */
+  }
+
+  .navLinks {
+    display: block; /* Stack the links vertically */
+    text-align: center; /* Center align text for mobile */
+  }
+
+  .navLink {
+    padding: 1rem 0; /* Add more padding for touch devices */
+    font-size: 1.2rem; /* Adjust font size for mobile */
+  }
+}
+
+/* Basic navbar styling */
+.navbarCustom {
+  background-color: #fffcfc;
+  border-bottom: 2px solid #fc03d6; /* Subtle pink border */
+}
+
+
+.navbarBrand h1 {
+  font-size: 1.8rem;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+.navbar-toggler-icon {
+  background-color: #fc03d6; /* Pink color for the hamburger icon */
+}
+
+@media (max-width: 768px) {
+  .navbarCustom {
+    background-color: #fffcfc;
+  }
+}
+

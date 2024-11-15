@@ -1,0 +1,239 @@
+/* Categories.module.css */
+
+/* Full-width container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  width: 100%; /* Ensures container spans full width */
+  background-color: #000; /* Black background for a sleek modern look */
+  margin: 0; /* Ensures container takes full width without margin */
+  box-sizing: border-box; /* Prevents padding from breaking layout */
+}
+
+/* Page title */
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff; /* White for contrast on black background */
+  margin-bottom: 2rem;
+}
+
+/* Highlighted text within title */
+.highlight {
+  color: #fc03d6; /* Vibrant pinkish purple for emphasis */
+}
+
+/* Timeline Section */
+.timelineSection {
+  width: 100%;
+  max-width: 1200px; /* Limits width of grid */
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Timeline container */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  padding-left: 40px; /* Space for the vertical line */
+  margin-top: 2rem;
+}
+
+/* Vertical timeline line */
+.timeline:before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 2px;
+  background: #fc03d6;
+  height: 100%;
+}
+
+/* Individual timeline item */
+.timelineItem {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3rem;
+  position: relative;
+  width: 100%;
+}
+
+/* Info card content */
+.infoCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin: 0 auto;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.infoCard h3 {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.infoCard p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.infoCard strong {
+  color: #fc03d6;
+}
+
+/* Category card within the timeline */
+.categoryCard {
+  background: linear-gradient(145deg, #ffffff, #f2f2f2); /* Light gradient for cards */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  max-width: 100%; /* Ensures card doesn’t overflow container */
+  z-index: 5;
+  height: 100%; /* Makes sure the card's height is consistent */
+}
+
+/* Ensure image takes up full card space */
+.categoryImage {
+  width: 100%;
+  height: 250px; /* Set fixed height for uniformity */
+  object-fit: cover; /* Ensure image covers space without distortion */
+  border-bottom: 2px solid #fc03d6; /* Adding a subtle border between image and text */
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Ensure it stretches across the entire image */
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  justify-content: center; /* Horizontally center the title */
+  align-items: center; /* Vertically center the title */
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff; /* White text for contrast */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Arial', sans-serif;
+  margin: 0; /* Remove any default margin */
+}
+
+/* Animation and hover effects */
+.categoryCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.categoryCard:hover .overlay {
+  opacity: 1;
+}
+
+.timelineItem:nth-child(odd) .categoryCard {
+  margin-right: 50px; /* Push cards to the left */
+}
+
+.timelineItem:nth-child(even) .categoryCard {
+  margin-left: 50px; /* Push cards to the right */
+}
+
+.timelineItem:nth-child(odd) .infoCard {
+  margin-left: 40px;
+}
+
+.timelineItem:nth-child(even) .infoCard {
+  margin-right: 40px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  /* Adjust page title font size */
+  .pageTitle {
+    font-size: 2rem;
+  }
+
+  /* Single column grid for timeline items */
+  .timeline {
+    padding-left: 20px; /* Adjust space for mobile */
+  }
+
+  /* Reduce image height for mobile */
+  .categoryImage {
+    height: 200px;
+  }
+
+  /* Adjust category card size */
+  .categoryCard {
+    max-width: 100%;
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  /* Stack items vertically on mobile */
+  .timelineItem {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timelineItem:nth-child(odd) .categoryCard,
+  .timelineItem:nth-child(even) .categoryCard {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .timelineItem:nth-child(odd) .infoCard,
+  .timelineItem:nth-child(even) .infoCard {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 300px; /* Reduce the size of info cards */
+    padding: 1rem;
+  }
+
+  /* Reduce the gap between timeline items on mobile */
+  .timelineItem {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Adjust font size for smaller screens */
+  .infoCard h3 {
+    font-size: 1.2rem;
+  }
+
+  .infoCard p {
+    font-size: 0.9rem;
+  }
+
+  .infoCard strong {
+    font-size: 1rem;
+  }
+}
