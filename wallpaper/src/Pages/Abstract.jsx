@@ -8,6 +8,7 @@ const App = () => {
         { id: '1CnSgPhxA9eX6zlneKVWHawFojuxQUQ4w', name: 'abstract1' },
         { id: '1ZwdUj2JG0qlYAp0mLiYROWdn-5LJ2ems', name: 'abstract2' },
 
+
         // More images here ...
     ]);
 
@@ -45,7 +46,7 @@ const App = () => {
         // Simulate a delay for the download
         setTimeout(() => {
             setLoading(false); // Stop loading
-            setSuccessMessage('Thank you for downloading!'); // Show success message
+            setSuccessMessage('downloading Successfull!'); // Show success message
             setTimeout(() => setSuccessMessage(''), 3000); // Hide message after 3 seconds
         }, 1500); // Adjust delay as needed
     };

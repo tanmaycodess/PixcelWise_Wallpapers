@@ -4,7 +4,7 @@ import Wall3 from '/Wall3.jpg';  // Image 1
 import Wall2 from '/Wall2.jpg';  // Image 2
 import Wall4 from '/Wall4.mp4';  // Video
 import Wall1 from '/Wall1.jpg';  // Image 2
-
+import Navbar from './Navbar/Navbar'; // Import Navbar
 
 // Importing React Icons
 import { FaArrowRight } from 'react-icons/fa'; // Right arrow icon
@@ -52,53 +52,55 @@ function Banner() {
     }, []);
 
     return (
-        <section className={styles.topBannerContainer}>
-            <div className={styles.overlay}>
-                <h1>PixcelWise Help's Exploring Stunning Wallpapers for Your Screen</h1>
-            </div>
+        <>
+            {/* Render Navbar outside the topBannerContainer on mobile */}
+            {isMobile && <Navbar />}
 
-            {/* Desktop Layout: 3 columns side by side */}
-            {!isMobile && (
-                <div className={styles.columns}>
-                    {desktopSlides.map((slide, index) => (
-                        <div key={index} className={styles.column}>
-                            {slide.type === 'image' ? (
-                                <img src={slide.src} className={styles.image} alt={slide.alt} />
-                            ) : (
-                                <video className={styles.image} autoPlay loop muted>
-                                    <source src={slide.src} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                            )}
-                            <p>
-                                {slide.type === 'image' ? 'Art beyond boundaries, for your screen.' : 'Breathe in the beauty of nature, one wallpaper at a time.'}
-                                <FaArrowRight className={styles.arrowIcon} />
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            )}
+            <section className={styles.topBannerContainer}>
 
-            {/* Mobile Carousel */}
-            {isMobile && (
-                <div className={styles.carouselContainer}>
-                    <div className={styles.carouselItem} style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                        {mobileSlides.map((slide, index) => (
-                            <div key={index} className={styles.carouselSlide}>
+                {/* Desktop Layout: 3 columns side by side */}
+                {!isMobile && (
+                    <div className={styles.columns}>
+                        {desktopSlides.map((slide, index) => (
+                            <div key={index} className={styles.column}>
                                 {slide.type === 'image' ? (
-                                    <img src={slide.src} className={styles.carouselImage} alt={slide.alt} />
+                                    <img src={slide.src} className={styles.image} alt={slide.alt} />
                                 ) : (
-                                    <video className={styles.carouselVideo} autoPlay loop muted>
+                                    <video className={styles.image} autoPlay loop muted>
                                         <source src={slide.src} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                 )}
+                                <p>
+                                    {slide.type === 'image' ? 'Art beyond boundaries, for your screen.' : 'Breathe in the beauty of nature, one wallpaper at a time.'}
+                                    <FaArrowRight className={styles.arrowIcon} />
+                                </p>
                             </div>
                         ))}
                     </div>
-                </div>
-            )}
-        </section>
+                )}
+
+                {/* Mobile Carousel */}
+                {isMobile && (
+                    <div className={styles.carouselContainer}>
+                        <div className={styles.carouselItem} style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                            {mobileSlides.map((slide, index) => (
+                                <div key={index} className={styles.carouselSlide}>
+                                    {slide.type === 'image' ? (
+                                        <img src={slide.src} className={styles.carouselImage} alt={slide.alt} />
+                                    ) : (
+                                        <video className={styles.carouselVideo} autoPlay loop muted>
+                                            <source src={slide.src} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </section>
+        </>
     );
 }
 

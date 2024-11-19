@@ -1,189 +1,170 @@
-/* Hero Section Layout */
+/* General Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Hero Section Styles */
 .heroSection {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: black;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: white;
+    /* Adjusting the min-height for mobile devices */
+    height: 80vh; /* Default height for larger screens */
 }
 
-/* Container for the hero section */
+/* Container for Both Content and Wall */
 .heroContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column; /* Stack on smaller screens */
+    justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    gap: 50px;
-    position: relative;
-    z-index: 1;
 }
 
-/* Content container (left side) */
+/* Left Section - Content */
 .contentContainer {
-    flex: 1;
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 1;
+    width: 100%;
+    text-align: center; /* Default text alignment for smaller screens */
+    margin-bottom: 2rem;
 }
 
-/* Icon container that holds the circle and line */
+/* Circle and Line */
 .iconContainer {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-bottom: 1rem;
 }
 
-/* Circle at the top of the line */
-.circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #fbfafc;
-}
-
-/* Vertical line extending below the circle */
 .line {
-    width: 3px;
-    height: 500px;
-    background: #fbfafc;
-    margin-top: 8px;
+    width: 60px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 2px;
 }
 
-/* Heading container */
+/* Heading Container */
 .headingContainer {
-    padding: 20px;
-    text-align: left;
-    z-index: 1;
+    margin-top: 1rem;
 }
 
-/* Heading Text */
 .headingText {
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
 }
 
-/* Highlighted text within heading */
 .highlight {
-    color: #fc03d6; /* A bright color to highlight the word */
+    color: #ff8c00;
+    font-weight: bold;
 }
 
-/* Subtext paragraph */
 .subText {
-    font-size: 1.2rem;
-    color: #f0f0f0;
-    line-height: 1.7;
+    font-size: 1.125rem;
+    color: #555;
+    line-height: 1.6;
     max-width: 700px;
     margin: 0 auto;
-    opacity: 0;
-    animation: fadeInSubText 2s ease-out 1s forwards;
 }
 
-/* Canvas or Wall component */
+/* Right Section - Wall */
 .wallContainer {
-    flex: 1;
-    max-width: 100%;
-    position: relative;
-    z-index: 0;
-    height: 80vh; /* 80% of the viewport height */
-}
-
-@media (max-width: 468px) {
-  /* On very small screens, increase the wall container height */
-  .wallContainer {
-    height: 200vh; /* Increase height to cover larger screens */
-  }
-
-  /* Hide the line on small screens */
-  .line {
-    display: none;
-  }
-}
-
-/* Fade-in animation for heading and text */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInSubText {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .heroContainer {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px;
-    }
-
-    .heroSection {
+    width: 100%;
+    height: 60vh; /* Default height for small screens */
+    max-height: 600px; /* Cap the height to 600px for larger screens */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
-    width: 100vw;
-    background-color: black;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+    margin-top: 2rem;
 }
 
-    .contentContainer {
-        max-width: 100%;
+/* Media Queries for Responsiveness */
+
+/* For screens smaller than 768px (mobile) */
+@media (max-width: 768px) {
+    /* Adjust Hero Section height on mobile */
+    .heroSection {
+        height: 20vh; /* Reduces the height when the Wall component is not displayed */
     }
 
-    .wallContainer {
-        max-width: 100%;
+    /* Stack the layout vertically on smaller screens */
+    .heroContainer {
+        flex-direction: column;
+    }
+
+    .contentContainer {
+        text-align: center; /* Center text on mobile */
     }
 
     .headingText {
-        font-size: 2.5rem;
-        text-align: center;
+        font-size: 2rem; /* Adjust font size for smaller screens */
     }
 
     .subText {
-        font-size: 1rem;
-        margin-top: 10px;
-        text-align: center;
+        font-size: 1rem; /* Adjust font size for smaller screens */
     }
 
-    .line {
-        height: 160px;
-        margin-top: 8px;
+    /* Adjust Wall component height for smaller screens */
+    .wallContainer {
+        height: 60vh; /* Wall should only take 60% of the viewport height */
     }
-    
-    /* Ensuring the line is hidden on mobile */
-    .line {
-        display: none;
+}
+
+/* For medium screens (tablet and small laptop) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .heroContainer {
+        flex-direction: column;
+    }
+
+    .headingText {
+        font-size: 2.25rem;
+    }
+
+    .subText {
+        font-size: 1.1rem;
+    }
+
+    .wallContainer {
+        height: 65vh; /* Adjust Wall height for mid-size screens */
+    }
+}
+
+/* For large screens (desktop) */
+@media (min-width: 1024px) {
+    /* Two-column layout on large screens */
+    .heroContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contentContainer {
+        width: 50%;
+        text-align: left; /* Align text to the left for large screens */
+        padding-right: 3rem; /* Add space between content and wall */
+    }
+
+    .wallContainer {
+        width: 50%;
+        height: 80vh; /* Keep the increased height of 80% viewport */
+        max-height: 700px; /* Increase max height to fit better on larger screens */
+    }
+
+    .headingText {
+        font-size: 3rem; /* Adjust font size for larger screens */
+    }
+
+    .subText {
+        font-size: 1.25rem; /* Adjust subtext font size */
     }
 }

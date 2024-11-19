@@ -1,254 +1,255 @@
-/* Categories.module.css */
+/* General Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Full-width container */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Main container for the categories page */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 2rem;
-  width: 100%; /* Ensures container spans full width */
-  background-color: #000; /* Black background for a sleek modern look */
-  margin: 0; /* Ensures container takes full width without margin */
-  box-sizing: border-box; /* Prevents padding from breaking layout */
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-/* Page title */
+/* Page Title */
 .pageTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  color: #fff; /* White for contrast on black background */
-  margin-bottom: 2rem;
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
 }
 
-/* Highlighted text within title */
 .highlight {
-  color: #fc03d6; /* Vibrant pinkish purple for emphasis */
+    color: #ff8c00;
+    font-weight: bold;
 }
 
-/* Timeline Section */
+/* Section Title (Subheading) */
 .timelineSection {
-  width: 100%;
-  max-width: 1200px; /* Limits width of grid */
-  margin: 0 auto;
-  padding: 3rem 1rem;
-  position: relative;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 4rem;
 }
 
-/* Timeline container */
+.sectionTitle {
+    font-size: 2rem;
+    color: #555;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Timeline container (grid layout) */
 .timeline {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  padding-left: 40px; /* Space for the vertical line */
-  margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 0 1rem;
 }
 
-/* Vertical timeline line */
-.timeline:before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  width: 2px;
-  background: #fc03d6;
-  height: 100%;
-}
-
-/* Individual timeline item */
+/* Individual Timeline Item */
 .timelineItem {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3rem;
-  position: relative;
-  width: 100%;
-  justify-content: space-between; /* To ensure the image and info card are spaced out */
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Info card content */
-.infoCard {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 350px;
-  text-align: left;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  margin: 0;
-  padding: 1rem;
-  z-index: 10;
+/* Tilt container for interactive hover effect */
+.tiltContainer {
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
 }
 
-.infoCard h3 {
-  font-size: 1.5rem;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.infoCard p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-.infoCard strong {
-  color: #fc03d6;
-}
-
-/* Category card within the timeline */
+/* Category Card */
 .categoryCard {
-  background: linear-gradient(145deg, #ffffff, #f2f2f2); /* Light gradient for cards */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  max-width: 100%; /* Ensures card doesn’t overflow container */
-  z-index: 5;
-  height: 100%; /* Makes sure the card's height is consistent */
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Ensure image takes up full card space */
+.categoryCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
 .categoryImage {
-  width: 100%;
-  height: 250px; /* Set fixed height for uniformity */
-  object-fit: cover; /* Ensure image covers space without distortion */
-  border-bottom: 2px solid #fc03d6; /* Adding a subtle border between image and text */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: opacity 0.3s ease;
 }
 
 .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0; /* Ensure it stretches across the entire image */
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  display: flex;
-  justify-content: center; /* Horizontally center the title */
-  align-items: center; /* Vertically center the title */
-  padding: 1rem;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.overlay h2 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fff; /* White text for contrast */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Arial', sans-serif;
-  margin: 0; /* Remove any default margin */
-}
-
-/* Animation and hover effects */
-.categoryCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 15px;
 }
 
 .categoryCard:hover .overlay {
-  opacity: 1;
+    opacity: 1;
 }
 
-.timelineItem:nth-child(odd) .categoryCard {
-  margin-right: 50px; /* Push cards to the left */
+.overlay h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.timelineItem:nth-child(even) .categoryCard {
-  margin-left: 50px; /* Push cards to the right */
+/* Info Card (Description and Personality) */
+.infoCard {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.timelineItem:nth-child(odd) .infoCard {
-  margin-left: 40px;
+.infoCard h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
-.timelineItem:nth-child(even) .infoCard {
-  margin-right: 40px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  /* Adjust page title font size */
-  .pageTitle {
-    font-size: 2rem;
-  }
-
-  /* Timeline Section changes for mobile: Keep line but display cards in row */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align to left for mobile */
-    gap: 2rem; /* Space between timeline items */
-    padding-left: 20px; /* Adjust space for the vertical line */
-  }
-
-  /* Keep vertical timeline line on mobile */
-  .timeline:before {
-    display: block;
-  }
-
-  /* Adjust category card size */
-  .categoryCard {
-    max-width: 100%;
-    height: auto; /* Allow height to adjust based on content */
-    display: flex;
-    flex-direction: row; /* Image and Info Card side by side */
-    gap: 1rem; /* Space between image and text */
-   
-  }
-
-  .categoryImage {
-    width: 100%; /* Set image width to 50% for side-by-side layout */
-    height: 150px; /* Adjust image height */
-  }
-
-  .infoCard {
-    width: 50%; /* Info card takes the other half */
-    max-width: none; /* Remove the max-width constraint */
-  }
-
-  /* Stack items vertically on mobile */
-  .timelineItem {
-    flex-direction: row; /* Maintain side-by-side layout */
-    align-items: center;
-    margin-bottom: 2rem; /* Adjust gap between items */
-  }
-
-  .timelineItem:nth-child(odd) .categoryCard,
-  .timelineItem:nth-child(even) .categoryCard {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .timelineItem:nth-child(odd) .infoCard,
-  .timelineItem:nth-child(even) .infoCard {
-    margin-left: 0;
-    margin-right: 0;
-    max-width: none; /* Remove max width */
-    padding: 1rem;
-  }
-
-  /* Adjust font size for smaller screens */
-  .infoCard h3 {
-    font-size: 1.2rem;
-  }
-
-  .infoCard p {
-    font-size: 0.9rem;
-  }
-
-  .infoCard strong {
+.infoCard p {
+    color: #777;
+    line-height: 1.6;
     font-size: 1rem;
-  }
+}
+
+.infoCard strong {
+    font-weight: 700;
+    color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    /* Adjust Page Title */
+    .pageTitle {
+        font-size: 2.5rem;
+    }
+
+    /* Adjust Section Title */
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    /* Timeline grid adjustment */
+    .timeline {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    /* Adjust Card Image */
+    .categoryImage {
+        height: 180px;
+    }
+
+    /* Info Card Adjustments */
+    .infoCard {
+        font-size: 0.9rem;
+        padding: 1.25rem;
+    }
+
+    .infoCard h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .pageTitle {
+        font-size: 2rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.25rem;
+    }
+
+    /* Timeline grid adjustment for small screens */
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .categoryImage {
+        height: 220px;
+    }
+
+    .overlay h2 {
+        font-size: 1.25rem;
+    }
+
+    /* Info Card Adjustments */
+    .infoCard {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .infoCard h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 1.75rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.125rem;
+    }
+
+    /* Timeline grid adjustment */
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .categoryImage {
+        height: 180px;
+    }
+
+    .overlay h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Info Card Adjustments */
+    .infoCard {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
+
+    .infoCard h3 {
+        font-size: 1rem;
+    }
 }

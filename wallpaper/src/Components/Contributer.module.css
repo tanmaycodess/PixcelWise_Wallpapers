@@ -1,151 +1,185 @@
-/* Contributors Page Layout */
+/* General Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Root Styles */
 .contributorsPage {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    background-color: black;
-}
-
-.iconContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.circle {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #fbfafc;
-}
-
-.line {
-  width: 3px;
-  height: 500px;
-  background: #fbfafc;
-  margin-top: 8px;
-}
-
-@media (max-width: 468px) {
-  /* Hide the circle and line on small screens */
-  .circle {
-    display: none;
-  }
-
-  .line {
-    display: none;
-  }
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #f4f4f4;
 }
 
 .layoutContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%; /* Ensure the content spans full height */
-    width: 100%;
-    max-width: 1200px;
-    gap: 20px;
-}
-
-.hero {
-    flex: 1;
-    height: 100%; /* Ensure the 3D model takes full height */
-    background-color: #000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
-.content {
-    flex: 1.5; /* Content should be larger than the model */
-    padding: 40px;
+/* Wrapper for both Hero and Content */
+.heroContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;  /* Stacked layout for smaller screens */
+}
+
+/* 3D Model Section */
+.hero {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.iconContainer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.line {
+    width: 60px;
+    height: 5px;
     background-color: #000;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+/* Content Section */
+.content {
+    width: 100%;
+    text-align: center;
     opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    padding-left: 2rem; /* Padding for spacing */
 }
 
 .content h1 {
     font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #fc03d6;
+    color: #333;
+    margin-bottom: 1rem;
 }
 
 .content p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: aliceblue;
+    font-size: 1.125rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
+/* Contributors List Section */
 .contributorsList {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    margin-top: 1.5rem;
 }
 
-/* Contributor Section */
-.contributor {
-    background-color: #fff;
-    padding: 12px 20px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.revolvingListWrapper {
+    overflow: hidden;
     width: 100%;
-    max-width: 250px; /* Adjust max-width based on your layout */
+    display: flex;
+    justify-content: center;
 }
 
-.contributor:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.revolvingList {
+    display: flex;
+    animation: rotate 10s linear infinite; /* Infinite loop animation */
+    justify-content: center;
 }
 
-.contributor p {
-    font-size: 1.2rem;
-    font-weight: 500;
+.contributor {
+    margin: 0 1rem;
+    font-size: 1.125rem;
+    font-weight: bold;
     color: #333;
-    margin: 0;
-    transition: color 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
 }
 
-.contributor p:hover {
-    color: #fc03d6; /* Change text color to pink on hover */
+/* Duplicate the contributor items for a seamless loop */
+.revolvingList .contributor:nth-child(n+6) {
+    animation-delay: 3s;  /* Delay the second batch for staggered animation */
 }
 
-
-/* Responsive Design for Contributors */
-@media (max-width: 768px) {
-    .contributor {
-        max-width: 200px;
-        padding: 10px 18px;
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .contributor p {
-        font-size: 1rem;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
+/* Infinite Loop - Move from Right to Left */
+@keyframes rotate {
+    0% {
+        transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+        transform: translateX(-100%);  /* Move to the left */
+    }
+}
+
+/* Mobile First - Small Devices */
+@media (max-width: 500px) {
     .layoutContainer {
-        flex-direction: column;
-        gap: 20px;
+        padding: 1rem;
     }
 
     .hero {
-        height: 250px; /* Adjust for smaller screens */
+        height: 250px;
     }
 
+    .content h1 {
+        font-size: 1.75rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .contributor {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    /* Stack the layout vertically */
+    .heroContainer {
+        flex-direction: column;
+    }
+
+    /* Reset padding for smaller screens */
     .content {
-        padding: 20px;
+        padding-left: 0;
+    }
+}
+
+/* Tablet - Medium Devices */
+@media (max-width: 768px) {
+    .layoutContainer {
+        padding: 1.5rem;
+    }
+
+    .hero {
+        height: 300px;
     }
 
     .content h1 {
@@ -153,43 +187,70 @@
     }
 
     .content p {
-        font-size: 1rem;
+        font-size: 1.125rem;
     }
 
-    .contributor img {
-        width: 50px;
-        height: 50px;
-    }
-
-    /* Line adjustments for smaller screens */
-    .line {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
     .contributor {
-        max-width: 180px;
-        padding: 8px 16px;
+        font-size: 1.125rem;
+        margin: 0 0.75rem;
     }
 
-    .contributor p {
-        font-size: 0.9rem;
-    }
-
-    /* Line adjustments for very small screens */
-    .line {
-      display: none;
+    /* Stack the layout vertically */
+    .heroContainer {
+        flex-direction: column;
     }
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
+/* Large Screens - Desktops */
+@media (min-width: 1024px) {
+    .layoutContainer {
+        flex-direction: row;  /* Two-column layout for large screens */
+        justify-content: space-between;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    .heroContainer {
+        width: 50%; /* 3D model on the left side */
+    }
+
+    .content {
+        width: 50%; /* Content on the right side */
+        padding-left: 3rem; /* Add padding to the left side for content */
+        text-align: left;  /* Align text to the left for larger screens */
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .content p {
+        font-size: 1.25rem;
+    }
+
+    .contributor {
+        font-size: 1.25rem;
+        margin: 0 1rem;
+    }
+}
+
+/* Extra Large Screens - Ultra-Wide Displays */
+@media (min-width: 1400px) {
+    .layoutContainer {
+        max-width: 1300px;
+    }
+
+    .hero {
+        height: 450px;
+    }
+
+    .content h1 {
+        font-size: 3rem;
+    }
+
+    .content p {
+        font-size: 1.375rem;
     }
 }

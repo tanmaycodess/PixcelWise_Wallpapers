@@ -79,7 +79,7 @@ const App = () => {
         // Simulate a delay for the download
         setTimeout(() => {
             setLoading(false); // Stop loading
-            setSuccessMessage('Thank you for downloading!'); // Show success message
+            setSuccessMessage('downloading Successfull!'); // Show success message
             setTimeout(() => setSuccessMessage(''), 3000); // Hide message after 3 seconds
         }, 1500); // Adjust delay as needed
     };

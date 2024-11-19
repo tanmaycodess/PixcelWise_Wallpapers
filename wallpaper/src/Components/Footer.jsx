@@ -85,16 +85,6 @@ const Footer = () => {
                     </button>
                 </motion.div>
 
-                <center>
-                    <motion.p
-                        className={styles.promotion}
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                        one last scroll to visit Our website @PixcelWise
-                    </motion.p>
-                </center>
             </div>
 
 

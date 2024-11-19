@@ -28,7 +28,6 @@ const Hero = () => {
                 {/* Left Section - Content */}
                 <div className={styles.contentContainer}>
                     <div className={styles.iconContainer}>
-                        {/* Circle and line */}
                         <div className={styles.line} />
                     </div>
 

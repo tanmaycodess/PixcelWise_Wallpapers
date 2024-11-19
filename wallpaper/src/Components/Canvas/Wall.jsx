@@ -35,7 +35,7 @@ const Computers = ({ isMobile }) => {
 
             <primitive
                 object={scene}
-                scale={isMobile ? 6 : 2.5} 
+                scale={isMobile ? 6 : 2.7} 
                 position={isMobile ? [0, 1.5, 6.5] : [1, 0, 1.2]} // Adjust position for responsiveness
                 rotation={[-0.01, 0.6, -0.1]} 
             />

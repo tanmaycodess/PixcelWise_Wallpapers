@@ -96,14 +96,7 @@ const ContributorsPage = () => {
                         animate={{ opacity: contributorsInView ? 1 : 0, y: contributorsInView ? 0 : 20 }}  // Animation based on visibility
                         transition={{ staggerChildren: 0.2, duration: 1, ease: 'easeOut' }}
                     >
-                        <div className={styles.contributor}>
-                            <p>Akanksha Kumar</p>
-                        </div>
-                        <div className={styles.contributor}>
-                            <p>Chirayu Yadav</p>
-                        </div>
-                       
-                        {/* Add more contributors as needed */}
+                        <RevolvingContributors />
                     </motion.div>
                 </motion.section>
             </div>
@@ -111,19 +104,27 @@ const ContributorsPage = () => {
     );
 };
 
-// Wall2 Component with continuous rotation
-const Wall3 = ({ isMobile }) => {
-    useFrame((state, delta) => {
-        // Apply rotation to the object
-        state.scene.rotation.y += delta * 0.1; // Adjust 0.1 for desired speed
-    });
+// Revolving Contributors List Component
+const RevolvingContributors = () => {
+    const contributors = [
+        "Akanksha Kumar",
+        "Chirayu Yadav",
+        "Umesh Yadav",
+        "Robin Kumar",
+        
+      
+    ];
 
     return (
-        <mesh>
-            {/* Your 3D model goes here */}
-            <boxBufferGeometry args={[3, 3, 3]} />
-            <meshStandardMaterial color="orange" />
-        </mesh>
+        <div className={styles.revolvingListWrapper}>
+            <div className={styles.revolvingList}>
+                {contributors.map((contributor, index) => (
+                    <div key={index} className={styles.contributor}>
+                        <p>{contributor}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
