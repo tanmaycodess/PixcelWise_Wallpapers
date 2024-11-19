@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import styles from './Categories.module.css';
 
 // Images for each category
-import abstractArtImage from '/Wall1.jpg';
-import natureImage from '/Wall2.jpg';
-import cityscapeImage from '/Wall3.jpg';
+import abstractArtImage from '/Wall3.jpg';
+import natureImage from '/Wall1.jpg';
+import cityscapeImage from '/Wall2.jpg';
 
 const categories = [
   {

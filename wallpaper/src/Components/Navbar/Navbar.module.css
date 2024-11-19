@@ -1,8 +1,8 @@
 /* :root to define global CSS variables */
 :root {
-  --primary-color: #ff6347; /* Customize to your brand color */
+  --primary-color: #ff8c00; /* Customize to your brand color */
   --hover-color: rgba(0, 0, 0, 0.1);
-  --active-color: #ff6347;
+  --active-color: #ff8c00;
   --font-size-large: 1.2rem;
   --font-size-small: 1rem;
 }

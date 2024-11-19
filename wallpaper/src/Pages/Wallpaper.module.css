@@ -6,7 +6,7 @@
     justify-content: center;
     padding: 20px;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: white;
 }
 
 /* Navbar Styling */
@@ -53,7 +53,7 @@ iframe {
 /* Button Styling */
 .download-btn {
     padding: 12px 20px;
-    background-color: #008CBA;
+    background-color: #ff8c00;
     color: white;
     border: none;
     font-size: 16px;
@@ -64,7 +64,7 @@ iframe {
 }
 
 .download-btn:hover {
-    background-color: #005f73;
+    background-color: #000;
 }
 
 .download-btn:disabled {
@@ -83,7 +83,7 @@ iframe {
 .active {
     margin: 0 5px;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #050404;
     color: white;
     border: none;
     font-size: 16px;
@@ -93,11 +93,11 @@ iframe {
 }
 
 .pageBtn:hover {
-    background-color: #0056b3;
+    background-color: #b9d9ff;
 }
 
 .active {
-    background-color: #0056b3;
+    background-color: #ff8c00;
     font-weight: bold;
 }
 

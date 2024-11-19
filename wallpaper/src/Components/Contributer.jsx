@@ -68,12 +68,6 @@ const ContributorsPage = () => {
                         <Preload all />
                     </Canvas>
                 </section>
-
-                <div className={styles.iconContainer}>
-                    {/* Circle and line */}
-                    <div className={styles.line} />
-                </div>
-
                 {/* Right Side - Content */}
                 <motion.section
                     className={styles.content}

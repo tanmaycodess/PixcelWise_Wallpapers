@@ -17,7 +17,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
-    background-color: #f4f4f4;
+    background-color: white;
 }
 
 .layoutContainer {
@@ -100,6 +100,10 @@ body {
     display: flex;
     animation: rotate 10s linear infinite; /* Infinite loop animation */
     justify-content: center;
+}
+
+.revolvingList p{
+    color : #ff8c00;
 }
 
 .contributor {
