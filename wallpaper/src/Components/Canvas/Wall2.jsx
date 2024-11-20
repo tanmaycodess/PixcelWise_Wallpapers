@@ -1,27 +1,11 @@
 import { useGLTF } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 
 const Computers = ({ isMobile }) => {
     const { scene } = useGLTF('3D/scene2.glb');
 
-    // Store the last frame time to calculate time difference
-    const rotationSpeed = Math.PI * 2;  // Full revolution (360 degrees) in radians
-    const rotationRef = useRef(0); // Reference to store accumulated rotation time
-
-    // Use useFrame to update the rotation based on time
-    useFrame((state, delta) => {
-        // Accumulate the time since the last frame
-        rotationRef.current += delta;
-
-        // Calculate the rotation based on time. One full rotation per second.
-        if (rotationRef.current >= 1) {
-            rotationRef.current -= 1;  // Reset after one full rotation (1 second)
-        }
-
-        // Apply rotation to the model around the Y-axis
-        scene.rotation.y = rotationRef.current * rotationSpeed;
-    });
+    // Set a static rotation for the scene (if needed)
+    scene.rotation.y = Math.PI / 4; // Example: Static 45-degree rotation
 
     return (
         <mesh>
@@ -32,8 +16,7 @@ const Computers = ({ isMobile }) => {
             <directionalLight
                 position={[3, 10, 3]}
                 intensity={6.0}
-                spotLight={5}
-                pointLight={4}
+                castShadow
                 shadow-mapSize-width={1024}
                 shadow-mapSize-height={1024}
             />
@@ -54,8 +37,8 @@ const Computers = ({ isMobile }) => {
             <primitive
                 object={scene}
                 scale={isMobile ? 4 : 4.5}
-                position={isMobile ? [0, -1.5, -0.5] : [1, -2.0, 1.0]}
-                rotation={[-0.01, -0.1, -0.1]}  // Initial rotation if needed
+                position={isMobile ? [0, -1.5, -0.5] : [1, -3.0, 1.0]}
+                rotation={[-0.01, -0.1, -0.1]} // Initial rotation if needed
             />
         </mesh>
     );
