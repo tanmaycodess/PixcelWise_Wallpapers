@@ -5,11 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-}
-
 /* Hero Section Styles */
 .heroSection {
     display: flex;
@@ -17,26 +12,28 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
-    background-color: white;
-    /* Adjusting the min-height for mobile devices */
+    background-color: transparent;
     height: 80vh; /* Default height for larger screens */
 }
 
 /* Container for Both Content and Wall */
 .heroContainer {
     display: flex;
-    flex-direction: column; /* Stack on smaller screens */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    gap: 2rem;
+    padding: 1rem;
 }
 
 /* Left Section - Content */
 .contentContainer {
     width: 100%;
-    text-align: center; /* Default text alignment for smaller screens */
+    text-align: center;
     margin-bottom: 2rem;
+    padding: 0 1rem;
 }
 
 /* Circle and Line */
@@ -60,7 +57,7 @@ body {
 }
 
 .headingText {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     color: #333;
     margin-bottom: 1rem;
 }
@@ -71,7 +68,7 @@ body {
 }
 
 .subText {
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: #555;
     line-height: 1.6;
     max-width: 700px;
@@ -87,24 +84,29 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
 }
 
-/* Media Queries for Responsiveness */
+/* Responsive Styles */
 
 /* For screens smaller than 768px (mobile) */
 @media (max-width: 768px) {
-    /* Adjust Hero Section height on mobile */
     .heroSection {
-        height: 20vh; /* Reduces the height when the Wall component is not displayed */
+        height: auto;
+        padding: 1rem;
     }
 
-    /* Stack the layout vertically on smaller screens */
     .heroContainer {
         flex-direction: column;
+        gap: 1.5rem;
     }
 
     .contentContainer {
-        text-align: center; /* Center text on mobile */
+        text-align: center;
+        padding: 0;
     }
 
     .headingText {
@@ -115,9 +117,8 @@ body {
         font-size: 1rem; /* Adjust font size for smaller screens */
     }
 
-    /* Adjust Wall component height for smaller screens */
     .wallContainer {
-        height: 60vh; /* Wall should only take 60% of the viewport height */
+        height: 50vh; /* Reduce Wall height for smaller screens */
     }
 }
 
@@ -125,14 +126,19 @@ body {
 @media (min-width: 768px) and (max-width: 1024px) {
     .heroContainer {
         flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contentContainer {
+        padding: 0 1rem;
     }
 
     .headingText {
-        font-size: 2.25rem;
+        font-size: 2.5rem; /* Slightly larger font for mid-size screens */
     }
 
     .subText {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Adjust subtext font size */
     }
 
     .wallContainer {
@@ -142,29 +148,52 @@ body {
 
 /* For large screens (desktop) */
 @media (min-width: 1024px) {
-    /* Two-column layout on large screens */
+    .heroSection {
+        height: 100vh; /* Full height for large screens */
+    }
+
     .heroContainer {
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-start;
     }
 
     .contentContainer {
         width: 50%;
-        text-align: left; /* Align text to the left for large screens */
-        padding-right: 3rem; /* Add space between content and wall */
+        text-align: left;
+        padding-right: 2rem; /* Add space between content and wall */
     }
 
     .wallContainer {
         width: 50%;
-        height: 80vh; /* Keep the increased height of 80% viewport */
-        max-height: 700px; /* Increase max height to fit better on larger screens */
+        height: 80vh; /* Increase Wall height for larger screens */
+        max-height: 800px; /* Increase max height */
     }
 
     .headingText {
-        font-size: 3rem; /* Adjust font size for larger screens */
+        font-size: 3rem; /* Larger font size for desktop */
     }
 
     .subText {
-        font-size: 1.25rem; /* Adjust subtext font size */
+        font-size: 1.25rem; /* Larger subtext font size */
+    }
+}
+
+/* For ultra-wide screens */
+@media (min-width: 1440px) {
+    .heroContainer {
+        max-width: 1400px;
+    }
+
+    .headingText {
+        font-size: 3.5rem;
+    }
+
+    .subText {
+        font-size: 1.5rem;
+    }
+
+    .wallContainer {
+        height: 90vh; /* Slightly taller wall for ultra-wide screens */
     }
 }

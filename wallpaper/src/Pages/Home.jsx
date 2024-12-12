@@ -5,6 +5,12 @@ import Categories from "../Components/Categories";
 import Footer from "../Components/Footer";
 import ContributorPage from "../Components/Contributer";
 import Curtain2 from '../Components/Curtain2';
+import { HeroParallax } from '../Components/Screen';
+import Wall1 from '/Wall1.jpg';
+import Wall2 from '/Wall2.jpg'
+import Wall3 from '/Wall3.jpg'
+
+
 
 const Home = () => {
     const [isLargeOrMediumDevice, setIsLargeOrMediumDevice] = useState(false);
@@ -26,9 +32,23 @@ const Home = () => {
         };
     }, []);
 
+    const products = [
+        {
+            title: "Product 1",
+            thumbnail: Wall1,
+        },
+        {
+            title: "Product 2",
+            thumbnail: Wall3,
+        },
+        
+    ];
+
+
     return (
         <div>
-            {isLargeOrMediumDevice ? <Curtain /> : <Curtain2 />}
+            {/* {isLargeOrMediumDevice ? <Curtain /> : <Curtain2 />} */}
+            <HeroParallax products={products} />
             <Hero />
             <ContributorPage />
             <Categories />

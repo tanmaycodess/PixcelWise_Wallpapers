@@ -1,0 +1,141 @@
+/* Screen.module.css */
+
+/* General Styling */
+:root {
+    --dark-text-color: #000;
+    --dark-secondary-text-color: #4A4A4A;
+}
+
+body{
+        background-color: white;
+
+}
+
+.headerContainer {
+    max-width: 1120px;
+    position: relative;
+    margin: 0 auto;
+    padding: 5rem 1rem;
+    width: 100%;
+    left: 0;
+    top: 20%;
+    transform: translateY(20%);
+    text-align: left;
+    /* background-color: white; */
+
+}
+
+.headerTitle {
+    font-size: 2rem; /* Mobile size */
+    font-weight: bold;
+    color: var(--dark-text-color);
+    line-height: 1.2;
+}
+
+.headerTitle1 {
+    font-size: 1.6rem; /* Mobile size */
+    font-weight: bold;
+    color: var(--dark-text-color);
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .headerTitle {
+        font-size: 3rem; /* Larger size for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .headerTitle {
+        font-size: 4rem; /* Larger size for desktops */
+    }
+}
+
+.headerDescription {
+    max-width: 640px;
+    font-size: 1rem; /* Mobile size */
+    margin-top: 2rem;
+    color: var(--dark-secondary-text-color);
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .headerDescription {
+        font-size: 1.125rem; /* Slightly larger for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .headerDescription {
+        font-size: 1.25rem; /* Larger for desktops */
+    }
+}
+
+/* CSS for ProductCard Component */
+
+/* Product Card Container */
+.productCard {
+    height: 34rem; /* Equivalent to h-96 */
+    width: 100%; /* Equivalent to w-[30rem] */
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.productCard:hover {
+    transform: translateY(-1.25rem); /* Equivalent to y: -20 */
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3); /* Shadow on hover */
+}
+
+/* Product Link */
+.productLink {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Product Image */
+.productImage {
+    object-fit: cover;
+    object-position: left top; /* Equivalent to object-left-top */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Product Overlay */
+.productOverlay {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.productCard:hover .productOverlay {
+    opacity: 1;
+}
+
+/* Product Title */
+.productTitle {
+    position: absolute;
+    bottom: 1rem; /* Equivalent to bottom-4 */
+    left: 1rem; /* Equivalent to left-4 */
+    color: white;
+    font-size: 1.25rem; /* Equivalent to text-lg */
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.productCard:hover .productTitle {
+    opacity: 1;
+}

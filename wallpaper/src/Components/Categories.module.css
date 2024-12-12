@@ -1,95 +1,73 @@
 /* Categories.module.css */
-
-:root {
-  --highlight-color: #ff8c00; /* Accent color for highlight */
-  --text-color: #333; /* Default text color */
-  --overlay-color: rgba(0, 0, 0, 0.5); /* Overlay color for images */
-  --background-color: #fff; /* Background color */
-  --border-radius: 10px; /* General border-radius for cards */
-  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft box shadow */
-}
-
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Container */
 .container {
-  padding: 2rem;
-  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: transparent;
 }
 
 .pageTitle {
-  font-size: 2.5rem;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: #333;
+  margin-bottom: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 
 .highlight {
-  color: var(--highlight-color);
+  color: #ff8c00;
 }
 
 .sectionTitle {
-  font-size: 1.8rem;
-  margin: 1rem 0;
-  color: var(--text-color);
-}
-
-/* Timeline section */
-.timelineSection {
-  max-width: 1200px;
-  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  color: #555;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  padding: 0 1rem;
 }
 
 .timeline {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .timelineItem {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.timelineItem:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timelineItem:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .tiltContainer {
-  perspective: 1000px;
-  transform-style: preserve-3d;
+  width: 100%;
+  max-width: 600px;
 }
 
-/* Category Card */
 .categoryCard {
   position: relative;
-  width: 100%;
-  height: 300px;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: var(--background-color);
-}
-
-.categoryCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
 }
 
 .categoryImage {
   width: 100%;
-  height: 100%;
+  height: clamp(250px, 50vh, 400px);
   object-fit: cover;
-  border-radius: var(--border-radius);
-  transition: transform 0.5s ease;
-}
-
-.categoryCard:hover .categoryImage {
-  transform: scale(1.1);
 }
 
 .overlay {
@@ -97,57 +75,105 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1rem;
-  background: var(--overlay-color);
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+}
+
+.categoryCard:hover .overlay {
+  height: 20%;
+}
+
+.overlay h2 {
+  color: white;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
 }
 
-/* Info Card */
 .infoCard {
-  background-color: var(--background-color);
+  background-color: transparent;
+  border-radius: 12px;
   padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.infoCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
 }
 
 .infoCard h3 {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  margin-bottom: 1rem;
 }
 
 .infoCard p {
-  font-size: 1rem;
-  margin: 0.3rem 0;
+  color: #666;
+  line-height: 1.6;
+  font-size: clamp(0.9rem, 3vw, 1rem);
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .pageTitle {
-    font-size: 2rem;
+  .container {
+    padding: 1rem 0.5rem;
   }
 
-  .sectionTitle {
-    font-size: 1.5rem;
+  .timelineItem {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .categoryCard {
-    height: 250px;
+  .tiltContainer,
+  .infoCard {
+    width: 95%;
+    max-width: 95%;
+  }
+
+  .categoryImage {
+    height: clamp(200px, 40vh, 300px);
   }
 
   .infoCard {
-    font-size: 0.9rem;
+    padding: 1rem;
+  }
+}
+
+/* Extreme Small Devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .timeline {
+    gap: 2rem;
+  }
+
+  .timelineItem {
+    gap: 0.5rem;
+  }
+
+  .categoryImage {
+    height: clamp(150px, 30vh, 250px);
+  }
+
+  .infoCard p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Horizontal Devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  .categoryImage {
+    height: clamp(150px, 50vh, 300px);
+  }
+
+  .infoCard {
+    padding: 0.75rem;
   }
 }

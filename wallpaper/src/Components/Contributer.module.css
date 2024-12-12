@@ -5,11 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-}
-
 /* Root Styles */
 .contributorsPage {
     display: flex;
@@ -17,7 +12,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
-    background-color: white;
+    background-color: transparent;
 }
 
 .layoutContainer {

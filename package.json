@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.13.5",
+    "tailwind-merge": "^2.5.5",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}

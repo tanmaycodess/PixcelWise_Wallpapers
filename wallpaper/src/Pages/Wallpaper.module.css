@@ -1,167 +1,152 @@
-/* App Container */
+/* Wallpaper.module.css */
+
+/* General App Styling */
 .App {
+    padding: 20px;
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 100vh;
-    background-color: white;
-}
-
-/* Navbar Styling */
-.Navbar {
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 15px 20px;
-    text-align: center;
+    gap: 20px;
 }
 
 /* Image Gallery */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     width: 100%;
     max-width: 1200px;
-    margin: 20px 0;
 }
 
 .image-item {
     position: relative;
-    background-color: white;
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Correcting iframe styling */
-iframe {
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+img {
     width: 100%;
-    height: 300px;
+    height: auto;
+    max-height: 300px;
     object-fit: cover;
-    border: none;
-     pointer-events: none; /* Prevents any interaction with the iframe */
-    transform: scale(1); /* Ensures no scaling */
-    transform-origin: 0 0; 
+    border-radius: 8px;
 }
 
-/* Button Styling */
+.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    font-size: 14px;
+    color: #888;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Download Button */
 .download-btn {
-    padding: 12px 20px;
-    background-color: #ff8c00;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
     color: white;
     border: none;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 0 0 10px 10px;
-    width: 100%;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
 
 .download-btn:hover {
-    background-color: #000;
+    background-color: #0056b3;
 }
 
-.download-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-/* Pagination Styling */
+/* Pagination */
 .pagination {
     display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
 }
 
-.pageBtn,
-.active {
-    margin: 0 5px;
-    padding: 10px 20px;
-    background-color: #050404;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
+.pageBtn {
+    padding: 8px 12px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .pageBtn:hover {
-    background-color: #b9d9ff;
+    background-color: #007bff;
+    color: white;
 }
 
 .active {
-    background-color: #ff8c00;
+    background-color: #007bff;
+    color: white;
     font-weight: bold;
-}
-
-.pageBtn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
 }
 
 /* Success Message */
 .successMessage {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
     background-color: #28a745;
     color: white;
-    padding: 15px 25px;
-    border-radius: 5px;
+    padding: 20px 30px;
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 999;
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -20%); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -20%); }
 }
 
 .messageContent {
-    display: flex;
-    align-items: center;
+    text-align: center;
 }
 
-.successMessage h2 {
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-.successMessage p {
-    font-size: 14px;
-}
-
-/* Media Queries for Responsiveness */
+/* Media Queries */
 @media (max-width: 768px) {
     .image-gallery {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
     }
 
     .download-btn {
-        padding: 10px 15px;
-        font-size: 14px;
+        padding: 8px 10px;
+        font-size: 12px;
     }
 
     .pagination {
-        flex-wrap: wrap;
+        gap: 5px;
     }
 
-    .pageBtn,
-    .active {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
-
-    .successMessage {
-        top: 10px;
-        right: 10px;
-        padding: 10px 15px;
+    .pageBtn {
+        padding: 6px 8px;
+        font-size: 12px;
     }
 }
 
@@ -170,20 +155,23 @@ iframe {
         grid-template-columns: 1fr;
     }
 
+    .App {
+        padding: 10px;
+    }
+
     .download-btn {
-        padding: 8px 12px;
-        font-size: 13px;
+        font-size: 10px;
+        padding: 6px 8px;
     }
 
-    .pageBtn,
-    .active {
-        padding: 6px 12px;
-        font-size: 12px;
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 
-    .successMessage {
-        top: 5px;
-        right: 5px;
-        padding: 8px 12px;
+    .pageBtn {
+        font-size: 10px;
+        padding: 5px 6px;
     }
 }

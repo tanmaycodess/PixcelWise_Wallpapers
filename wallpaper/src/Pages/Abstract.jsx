@@ -1,57 +1,58 @@
-import React, { useState } from 'react';
-import styles from './Wallpaper.module.css'; // Import the CSS Module
-import Navbar from '../Components/Navbar/Navbar';
+import React, { useState } from "react";
+import styles from "./Wallpaper.module.css"; // Import the CSS Module
+import Navbar from "../Components/Navbar/Navbar";
 
 const App = () => {
     const [images, setImages] = useState([
-        // page 1
-        { id: '1CnSgPhxA9eX6zlneKVWHawFojuxQUQ4w', name: 'abstract1' },
-        { id: '1ZwdUj2JG0qlYAp0mLiYROWdn-5LJ2ems', name: 'abstract2' },
-
-
-        // More images here ...
+        { id: "abstract3_mnkanv", name: "Abstract 1" },
+        { id: "abstract2_b1e2cx", name: "Abstract 2" },
+        // More images here with Cloudinary public IDs
     ]);
 
     const imagesPerPage = 8;
     const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(false); // Loading state
-    const [successMessage, setSuccessMessage] = useState(''); // Success message state
+    const [imageLoadingStates, setImageLoadingStates] = useState(
+        images.reduce((acc, image) => {
+            acc[image.id] = true; // Initially, all images are loading
+            return acc;
+        }, {})
+    );
 
-    // Function to change page
+    const [successMessage, setSuccessMessage] = useState(""); // Success message state
+
+    const cloudName = "dvswnibip";
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    // Calculate which images to show based on currentPage
     const indexOfLastImage = currentPage * imagesPerPage;
     const indexOfFirstImage = indexOfLastImage - imagesPerPage;
     const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
-    // Construct the image URLs for viewing and downloading
     const imageUrls = currentImages.map((image) => ({
         ...image,
-        url: `https://drive.google.com/uc?export=view&id=${image.id}`,
-        downloadUrl: `https://drive.google.com/uc?export=download&id=${image.id}`,
-        iframeUrl: `https://drive.google.com/file/d/${image.id}/preview`,
+        url: `https://res.cloudinary.com/${cloudName}/image/upload/f_auto/${image.id}`,
+        downloadUrl: `https://res.cloudinary.com/${cloudName}/image/upload/fl_attachment/${image.id}`,
     }));
 
-    // Function to trigger image download
+    const handleImageLoad = (id) => {
+        setImageLoadingStates((prevState) => ({
+            ...prevState,
+            [id]: false, // Set the loading state of the image to false once it has loaded
+        }));
+    };
+
     const downloadImage = (url, name) => {
-        setLoading(true); // Start loading
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
         link.download = name;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
-        // Simulate a delay for the download
-        setTimeout(() => {
-            setLoading(false); // Stop loading
-            setSuccessMessage('downloading Successfull!'); // Show success message
-            setTimeout(() => setSuccessMessage(''), 3000); // Hide message after 3 seconds
-        }, 1500); // Adjust delay as needed
+        setSuccessMessage("Download Successful!");
+        setTimeout(() => setSuccessMessage(""), 3000); // Hide message after 3 seconds
     };
 
-    // Calculate total pages
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(images.length / imagesPerPage); i++) {
         pageNumbers.push(i);
@@ -61,25 +62,26 @@ const App = () => {
         <>
             <Navbar />
             <div className={styles.App}>
-                <div className={styles['image-gallery']}>
-                    {imageUrls.map((image, index) => (
-                        <div key={index} className={styles['image-item']}>
-                            <iframe
-                                src={image.iframeUrl}
-                                width="500"
-                                height="500"
-                                title={image.name}
-                                frameBorder="0"
-                                allow="autoplay"
-                                loading="lazy" // Lazy loading for performance
+                <div className={styles["image-gallery"]}>
+                    {imageUrls.map((image) => (
+                        <div key={image.id} className={styles["image-item"]}>
+                            {imageLoadingStates[image.id] && (
+                                <div className={styles["loading-spinner"]}>Loading...</div>
+                            )}
+                            <img
+                                src={image.url}
+                                alt={image.name}
+                                onLoad={() => handleImageLoad(image.id)}
+                                className={imageLoadingStates[image.id] ? styles.hidden : ""}
                             />
-                            <button
-                                onClick={() => downloadImage(image.downloadUrl, image.name)}
-                                className={styles['download-btn']}
-                                disabled={loading} // Disable the button while loading
-                            >
-                                {loading ? 'Downloading...' : 'Download'}
-                            </button>
+                            {!imageLoadingStates[image.id] && (
+                                <button
+                                    onClick={() => downloadImage(image.downloadUrl, image.name)}
+                                    className={styles["download-btn"]}
+                                >
+                                    Download
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -90,7 +92,9 @@ const App = () => {
                         <button
                             key={number}
                             onClick={() => paginate(number)}
-                            className={currentPage === number ? styles.active : styles.pageBtn}
+                            className={
+                                currentPage === number ? styles.active : styles.pageBtn
+                            }
                         >
                             {number}
                         </button>

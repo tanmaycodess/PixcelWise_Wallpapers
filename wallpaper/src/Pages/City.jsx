@@ -1,90 +1,101 @@
-import React, { useState } from 'react';
-import styles from './Wallpaper.module.css'; // Import the CSS Module
-import Navbar from '../Components/Navbar/Navbar';
+import React, { useState } from "react";
+import styles from "./Wallpaper.module.css"; // Import the CSS Module
+import Navbar from "../Components/Navbar/Navbar";
 
 const App = () => {
     const [images, setImages] = useState([
-        // page 1
-        { id: '1gRWbKyK6tlXZTklL-w--yZ5rnMdUba0t', name: 'city1' },
-        { id: '1FN-3nhDWr-0_xqanEbad4fBdPNslDoko', name: 'city2' },
-        { id: '1l7ddNJfpOGT0jwwd05c1_a7s7BesGHF0', name: 'city3' },
-        { id: '1q6P33fI-orRxKnmGRe9KfBxijiDwGAtH', name: 'city4' },
-        { id: '1AIg_JJcVPvIbI22jCZSjIC9P4DbfU4mW', name: 'city5' },
-        { id: '1bokEEk0h973XHR5jMg1SOnQhKccT9rWh', name: 'city6' },
-        { id: '1Th-ZPHeeGE0Ynq9Mk5h86EHU63cQpj8E', name: 'city7' },
-        { id: '1wlSPtUphW31woFv_dmp8Jyti9jQez8pb', name: 'city8' },
-        // page 2
-        { id: '1ZfthdI8F10AbnJAdKDzxaXLnVV_O-zXD', name: 'city9' },
-        { id: '1Blx06ZcMMtGp3LW_25I5FT5ZdDYKi6gn', name: 'city10' },
-        { id: '1X-1bAS6OQjleWu8Mh3sJNpfFZMrgJ8aR', name: 'city11' },
-        { id: '1MSxJYkNu-yj3Kdkx3Bkz6gFuHFmdi6Ja', name: 'city12' },
-        { id: '1mgh4xvEBj9pWDgSK4W8ndMAKA-8r2noy', name: 'city13' },
-        { id: '1-Z5aHoL4R9Vi5N-Hy_mW_HjYtjyGv9gQ', name: 'city14' },
-        { id: '1CzNi366D5SWotGOhUa3WWh1yTX4SMtxA', name: 'city15' },
-        { id: '18ileg2TMyjbDFRHHJNSc7nBtR6eiTPzf', name: 'city16' },
-        // page3
-        { id: '1jycDfiBFBN71XpuzPwSHVVHeIfLeJ_Yp', name: 'city17' },
-        { id: '1FGaLv6rlkPJIDfOfrcQp61FslghvUWO1', name: 'city18' },
-        { id: '1_N3GqOedV72vYJGkN7_vSZ-JeEIcWmVh', name: 'city19' },
-        { id: '1xmT-UwOwRk7L_dPsSssWbfZQx-_uf8sh', name: 'city20' },
-        { id: '18AvNPkf3TVyHh9SbI6f1DPFYxZK7nd9W', name: 'city21' },
-        { id: '1U4UbsNP11DaOH5Cet0mXlWUctEi87bUF', name: 'city22' },
-        { id: '1xd-PqS5y6r5r4slg__uU1SaK8auUFuXU', name: 'city23' },
-        { id: '1K_73c0YJxg-DlNd9XeG4N42lBt0389s1', name: 'city24' },
-        // page 4
-        { id: '1vNdn0Crmi4KvmHiyIfsEF26BEpO8yUpK', name: 'city17' },
-        { id: '1OKOkxjFOFQPFTKuVVmEgmKiLhV3m2nJw', name: 'city18' },
-        { id: '1_AHcW3crPEx-Ruhd8RC-XVonrSPUqRkq', name: 'city19' },
-        { id: '1h2JCAhhwNF5yIxFYYuLdGyZ1768Qg0RV', name: 'city20' },
-        { id: '1Y8GWR913j6oVKRJY4eEkTsyVY-AHH-mu', name: 'city21' },
-        { id: '1_yF7x2DcWqq_FU2QahKraNVa3ZtFTXaO', name: 'city22' },
-        { id: '12zdvhmh3LI4gq6v83jLhDeCqj2h-u2mV', name: 'city23' },
-        { id: '1yggNtEBPtUuXxcd0-RDBaQnLpTtF_nMS', name: 'city24' },
-        // page 5
+        { id: "city32_ngbm0n", name: "City 1" },
+        { id: "city33_pmnpdx", name: "City 2" },
 
-        // More images here ...
-     ]);
+        { id: "city34_mfhmmc", name: "City 3" },
+        { id: "city35_hsxibs", name: "City 4" },
+
+        { id: "city36_kw7wjv", name: "City 5" },
+        { id: "city37_cm6njm", name: "City 6" },
+
+        { id: "city38_skixff", name: "City 7" },
+        { id: "city40_irvd6z", name: "City 8" },
+
+        { id: "city39_xtobg6", name: "City 9" },
+        { id: "city1_ictxxe", name: "City 10" },
+
+        { id: "city2_yx9ve5", name: "City 11" },
+        { id: "city4_ak7jvu", name: "City 12" },
+
+        { id: "city3_oveuct", name: "City 13" },
+        { id: "city7_rbc9y9", name: "City 14" },
+
+        { id: "city5_vovpt4", name: "City 15" },
+        { id: "city8_zgpqyp", name: "City 16" },
+
+        { id: "city9_udpsmk", name: "City 17" },
+        { id: "city11_ng15yv", name: "City 18" },
+
+        { id: "city12_xzs3gw", name: "City 19" },
+        { id: "city13_o44ixa", name: "City 20" },
+
+        { id: "city15_bl39s2", name: "City 21" },
+        { id: "city20_wqtett", name: "City 22" },
+
+        { id: "city19_xg3lzb", name: "City 23" },
+        { id: "city24_uclkz7", name: "City 24" },
+
+        { id: "city28_pxqglz", name: "City 25" },
+        { id: "city25_jamwxz", name: "City 26" },
+
+        { id: "city27_jbhbdb", name: "City 27" },
+        { id: "city29_d0ghi4", name: "City 28" },
+
+        { id: "city41_ell6pi", name: "City 29" },
+        { id: "city30_gbplo8", name: "City 30" },
+
+        // More images here with Cloudinary public IDs
+    ]);
 
     const imagesPerPage = 8;
     const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(false); // Loading state
-    const [successMessage, setSuccessMessage] = useState(''); // Success message state
+    const [imageLoadingStates, setImageLoadingStates] = useState(
+        images.reduce((acc, image) => {
+            acc[image.id] = true; // Initially, all images are loading
+            return acc;
+        }, {})
+    );
 
-    // Function to change page
+    const [successMessage, setSuccessMessage] = useState(""); // Success message state
+
+    const cloudName = "dvswnibip";
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    // Calculate which images to show based on currentPage
     const indexOfLastImage = currentPage * imagesPerPage;
     const indexOfFirstImage = indexOfLastImage - imagesPerPage;
     const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
-    // Construct the image URLs for viewing and downloading
     const imageUrls = currentImages.map((image) => ({
         ...image,
-        url: `https://drive.google.com/uc?export=view&id=${image.id}`,
-        downloadUrl: `https://drive.google.com/uc?export=download&id=${image.id}`,
-        iframeUrl: `https://drive.google.com/file/d/${image.id}/preview`,
+        url: `https://res.cloudinary.com/${cloudName}/image/upload/f_auto/${image.id}`,
+        downloadUrl: `https://res.cloudinary.com/${cloudName}/image/upload/fl_attachment/${image.id}`,
     }));
 
-    // Function to trigger image download
+    const handleImageLoad = (id) => {
+        setImageLoadingStates((prevState) => ({
+            ...prevState,
+            [id]: false, // Set the loading state of the image to false once it has loaded
+        }));
+    };
+
     const downloadImage = (url, name) => {
-        setLoading(true); // Start loading
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
         link.download = name;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
-        // Simulate a delay for the download
-        setTimeout(() => {
-            setLoading(false); // Stop loading
-            setSuccessMessage('downloading Successfull!'); // Show success message
-            setTimeout(() => setSuccessMessage(''), 3000); // Hide message after 3 seconds
-        }, 1500); // Adjust delay as needed
+        setSuccessMessage("Download Successful!");
+        setTimeout(() => setSuccessMessage(""), 3000); // Hide message after 3 seconds
     };
 
-    // Calculate total pages
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(images.length / imagesPerPage); i++) {
         pageNumbers.push(i);
@@ -94,25 +105,26 @@ const App = () => {
         <>
             <Navbar />
             <div className={styles.App}>
-                <div className={styles['image-gallery']}>
-                    {imageUrls.map((image, index) => (
-                        <div key={index} className={styles['image-item']}>
-                            <iframe
-                                src={image.iframeUrl}
-                                width="500"
-                                height="500"
-                                title={image.name}
-                                frameBorder="0"
-                                allow="autoplay"
-                                loading="lazy" // Lazy loading for performance
+                <div className={styles["image-gallery"]}>
+                    {imageUrls.map((image) => (
+                        <div key={image.id} className={styles["image-item"]}>
+                            {imageLoadingStates[image.id] && (
+                                <div className={styles["loading-spinner"]}>Loading...</div>
+                            )}
+                            <img
+                                src={image.url}
+                                alt={image.name}
+                                onLoad={() => handleImageLoad(image.id)}
+                                className={imageLoadingStates[image.id] ? styles.hidden : ""}
                             />
-                            <button
-                                onClick={() => downloadImage(image.downloadUrl, image.name)}
-                                className={styles['download-btn']}
-                                disabled={loading} // Disable the button while loading
-                            >
-                                {loading ? 'Downloading...' : 'Download'}
-                            </button>
+                            {!imageLoadingStates[image.id] && (
+                                <button
+                                    onClick={() => downloadImage(image.downloadUrl, image.name)}
+                                    className={styles["download-btn"]}
+                                >
+                                    Download
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -123,7 +135,9 @@ const App = () => {
                         <button
                             key={number}
                             onClick={() => paginate(number)}
-                            className={currentPage === number ? styles.active : styles.pageBtn}
+                            className={
+                                currentPage === number ? styles.active : styles.pageBtn
+                            }
                         >
                             {number}
                         </button>

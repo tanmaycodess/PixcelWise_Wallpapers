@@ -5,11 +5,13 @@ import Abstract from './Pages/Abstract';
 import Nature from './Pages/Nature';
 import City from './Pages/City';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HaloEffect from './Components/VantaBackground';
 
 
 const App = () => {
   return (
     <Router> 
+      <HaloEffect />
       <div>
         <Routes> 
           <Route path="/" element={<Home />} /> 
